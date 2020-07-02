@@ -8,8 +8,8 @@ public abstract class ShapeImpl implements Shape{
 
     private final int LocationX, LocationY;
     private final int width, height;
-    private char borderChar;
-    private Color color;
+    private char borderChar = '*';
+    private Color color = Color.blue;
 
 
     public ShapeImpl(int xPos, int yPos, int width, int height) {
@@ -57,7 +57,17 @@ public abstract class ShapeImpl implements Shape{
     }
 
     public void draw(Canvas canvas) {
-
+        for (int i = LocationY; i < LocationY + height - 1; i++) {
+            for (int j = LocationX; j < LocationX + width - 1; j++) {
+                if (isBorder(j,i)) {
+                    canvas.setCellText(j,i,borderChar);
+                    canvas.setCellColor(j,i,color);
+                }
+                else if (isInside(j,i)) {
+                    canvas.setCellColor(j,i,color);
+                }
+            }
+        }
     }
 
     protected abstract boolean isBorder(int xPos, int yPos);

@@ -1,8 +1,8 @@
 package ca.cmpt213.a3.shapes;
 
 public class Rhombus extends ShapeImpl {
-    public Rhombus(int xPos, int yPos, int sideLength) {
-        super(xPos, yPos, sideLength, sideLength);
+    public Rhombus(int xPos, int yPos, int size) {
+        super(xPos, yPos, size, size);
     }
 
     @Override
