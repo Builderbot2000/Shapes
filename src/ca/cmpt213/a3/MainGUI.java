@@ -30,10 +30,11 @@ public class MainGUI {
 		// (Comment / Uncomment these calls as you like during testing)
 		List<PicturePanel> pictures = new ArrayList<>();
 		pictures.add(makeRectanglesPicture());
-		pictures.add(makeRhombusesPicture());
-		pictures.add(makeTextBoxesPicture());
-		pictures.add(makeMixedPicture());
-		pictures.add(makeFrontAndBackPicture());
+//		pictures.add(makeRhombusesPicture());
+//		pictures.add(makeTextBoxesPicture());
+//		pictures.add(makeMixedPicture());
+//		pictures.add(makeFrontAndBackPicture());
+//		pictures.add(squareInsideRhombusInsideRectangle());
 
 
 
@@ -56,6 +57,30 @@ public class MainGUI {
 		frame.setVisible(true);
 	}
 
+	// Quiz Question Test
+	private static PicturePanel squareInsideRhombusInsideRectangle() {
+		PicturePanel picture = new PicturePanel("Square Inside Rhombus Inside Rectangle Test", 31, 21);
+
+		// Add textbox
+		TextBox tb1 = new TextBox(0, 0, 31, 21, "CMPT 213!");
+		tb1.setColor(Color.GREEN);
+		tb1.setBorderChar('G');
+		picture.addFront(tb1);
+
+		// Add Rhombus
+		Rhombus r2 = new Rhombus(7, 2, 9);
+		r2.setColor(Color.YELLOW);
+		r2.setBorderChar('Y');
+		picture.addFront(r2);
+
+		// Add square
+		Rectangle sq1 = new Rectangle(12, 7, 7, 7);
+		sq1.setColor(Color.RED);
+		sq1.setBorderChar('R');
+		picture.addFront(sq1);
+
+		return picture;
+	}
 
 	// --------------------------------------------------------------------------
 	// Rectangle Test

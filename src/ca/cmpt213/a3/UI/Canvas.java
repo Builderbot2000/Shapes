@@ -6,7 +6,6 @@ import java.awt.Color;
  * Represent a 2D surface to render text and colored squares on. 
  * Size of the canvas is set by the constructor, and then calls can be made 
  * to setCellText() and setCellColor() to add items to the canvas.
- *
  */
 public class Canvas {
 	// Size of screen to draw.
@@ -67,7 +66,7 @@ public class Canvas {
 	}
 
 	public Color getCellColor(int x, int y) {
-		// Set value for cells in viewable area
+		// Get value for cells in viewable area
 		return color[y][x];
 	}
 	private boolean isCellInCanvas(int x, int y) {

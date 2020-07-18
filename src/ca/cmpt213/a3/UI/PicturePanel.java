@@ -15,6 +15,9 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 @SuppressWarnings("serial")
+/**
+ * A Swing picture panel that allows various shapes to be drawn onto it.
+ */
 public class PicturePanel extends JPanel{
 	
 	private static final int BORDER_WIDTH = 2; 

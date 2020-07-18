@@ -4,6 +4,11 @@ import ca.cmpt213.a3.UI.Canvas;
 
 import java.awt.*;
 
+/**
+ * General model for a shape generator.
+ * Contains implementation of basic getters and setters for location, dimension, and appearance.
+ * Implements the draw method using the methods isBorder() and isInside() to recognize correct painting action.
+ */
 public abstract class ShapeImpl implements Shape{
 
     private final int LocationX, LocationY;
@@ -48,23 +53,32 @@ public abstract class ShapeImpl implements Shape{
         return color;
     }
 
-    public int getWidth() {
+    protected int getWidth() {
         return width;
     }
 
-    public int getHeight() {
+    protected int getHeight() {
         return height;
     }
 
+    /**
+     * Draws shapes by going over each tile and determining if it is a part of the shape
+     * and if it is a part of the shape's border.
+     * Recognizes overlap and layer difference by painting new shapes directly over old ones.
+     * @param canvas The canvas upon which all the shapes will be drawn.
+     */
     public void draw(Canvas canvas) {
-        for (int i = LocationY; i < LocationY + height - 1; i++) {
-            for (int j = LocationX; j < LocationX + width - 1; j++) {
-                if (isBorder(j,i)) {
-                    canvas.setCellText(j,i,borderChar);
-                    canvas.setCellColor(j,i,color);
-                }
-                else if (isInside(j,i)) {
-                    canvas.setCellColor(j,i,color);
+        for (int i = LocationY; i < LocationY + height; i++) {
+            for (int j = LocationX; j < LocationX + width; j++) {
+                // System.out.println("At: x"+j+" y"+i);
+                if (j >= 0&& j < canvas.getSizeX() && i >= 0 && i < canvas.getSizeY()) {
+                    if (isInside(j, i)) {
+                        canvas.setCellColor(j, i, color);
+                        canvas.setCellText(j,i,'\u0000');
+                    }
+                    if (isBorder(j, i)) {
+                        canvas.setCellText(j, i, borderChar);
+                    }
                 }
             }
         }
